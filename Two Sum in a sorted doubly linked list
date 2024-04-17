@@ -1,0 +1,53 @@
+public class DoublyLinkedList {
+    public static class Node{
+        int data;
+        Node next;
+        Node prev;
+        Node(int x)
+        {
+            data=x;
+        }
+    }
+    public static class LinkedList
+    {
+        void twosum(Node head,int target) {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            Node t = temp;
+            Node h = head;
+            while (t.data > h.data) {
+                if (t.data + h.data == target) {
+                    System.out.println(t.data + " " + h.data);
+                    break;
+                }
+                if (t.data + h.data > target) {
+                    t = t.prev;
+                }
+                if (t.data + h.data < target) {
+                    h = h.next;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Node a=new Node(10);
+        Node b=new Node(20);
+        Node c=new Node(38);
+        Node d=new Node(98);
+        Node e=new Node(380);
+        a.next=b;
+        b.next=c;
+        b.prev=a;
+        c.next=d;
+        c.prev=b;
+        d.next=e;
+        d.prev=c;
+        e.prev=d;
+        LinkedList ll = new LinkedList();
+        ll.twosum(a,58);
+
+
+    }
+}
